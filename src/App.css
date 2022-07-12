@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+
+.close-icon {
+  display: flex;
+  justify-content: flex-end;
+  /* cursor:pointer; */
+
+  /* align-items: flex-end; */
+}
+
+/* .close-icon:hover{
+  background-color:red;
+
+} */
+
+.btn-otp {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-proceed {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  
+}
