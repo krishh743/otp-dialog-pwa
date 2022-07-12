@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/otp-dialog-pwa/static/css/main.e6c13ad2.css",
+    "main.js": "/otp-dialog-pwa/static/js/main.202c2b18.js",
+    "index.html": "/otp-dialog-pwa/index.html",
+    "main.e6c13ad2.css.map": "/otp-dialog-pwa/static/css/main.e6c13ad2.css.map",
+    "main.202c2b18.js.map": "/otp-dialog-pwa/static/js/main.202c2b18.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.202c2b18.js"
+  ]
+}
