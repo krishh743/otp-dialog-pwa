@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import "./App.css";
+import "../App.css";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
@@ -7,6 +7,8 @@ import OTPInput,{ResendOTP} from "otp-input-react";
 import CloseIcon from "@mui/icons-material/Close";
 import Container from "@mui/material/Container";
 import Otp from "../components/Otp";
+import swal from 'sweetalert';
+
 
 export default function Api() {
   const [state, setState] = useState({
@@ -30,17 +32,20 @@ export default function Api() {
   };
 
   const toggleDrawer = (anchor, open) => (event) => {
+    
     if (
       event.type === "keydown" &&
       (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
+      ) {
+        return;
+      }
 
     setState({ ...state, [anchor]: open });
   };
 
   const handleSendOtp = () => {
+    swal("OTP verified successfully!")
+
     // do your api call
     // enable otp listener
     const res = Math.floor(1000 + Math.random() * 9000);

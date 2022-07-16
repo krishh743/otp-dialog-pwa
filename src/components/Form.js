@@ -5,7 +5,7 @@ import {
     Typography,
     Paper,
     TextField,
-    Button,
+  
     Checkbox,
     FormControlLabel,
   } from "@mui/material";
@@ -47,8 +47,15 @@ import {
       }
     };
   
+
+// useEffect(() => {
+// localStorage.setItem("name",JSON.stringify(name));
+
+// },[]);
+
+
     useEffect(() => {
-      let url = "http://localhost:3000/form";
+      let url = "http://localhost:3000/";
       fetch(url).then((resp) => {
         resp.json()
           .then((result) => {
@@ -60,9 +67,10 @@ import {
             let collection = localStorage.getItem("form");
             setData(JSON.parse(collection));
             setMode("offline");
+            setMode(data)
           });
       });
-    },[]);
+    },[data]);
   
     //validations
     const runValidations = () => {

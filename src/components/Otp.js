@@ -6,10 +6,13 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
-import OTPInput,{ResendOTP} from "otp-input-react";
+import OTPInput, { ResendOTP } from "otp-input-react";
 import { useReadOTP } from "react-read-otp";
 import CloseIcon from "@mui/icons-material/Close";
-// import "./App.css";
+import Timer from "./Timer";
+import "../App.css";
+import { display } from "@mui/system";
+import swal from 'sweetalert';
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -18,10 +21,12 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 function Otp() {
   const [enabled, setEnabled] = useState(false);
-  const [otp, setOTP] = useState("");
-  useReadOTP(setOTP, {
-    enabled,
-  });
+  
+  const[read,setRead]=useState(10)
+//   const [otp, setOTP] = useState("");
+//   useReadOTP(setOTP, {
+//     enabled,
+//   });
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -47,11 +52,12 @@ function Otp() {
   };
 
   const handleSendOtp = () => {
+swal("OTP verified successfully!")
     // do your api call
     // enable otp listener
     const res = Math.floor(1000 + Math.random() * 9000);
     setTimeout(() => {
-      setOTP(res);
+    //   setOTP(res);
       setEnabled(true);
     }, 3000);
   };
@@ -88,22 +94,29 @@ function Otp() {
             // value={otp}
             // onChange={(e) => setOTP(e.target.value)}
           />
+
+         
+         
           
-          <ResendOTP style={{display:"flex",justifyContent: "flex-start"}} handelResendClick={() => console.log("Resend clicked")} />
+          <Timer/>
 
-          <div style={{marginTop:"30px"}}>
-            {enabled && <p style={{ color: "green" }}>Your OTP is Verified</p>}
-            <Button onClick={handleSendOtp} variant="contained">
-              Proceed
-            </Button>
+          <div style={{ marginTop: "30px", display:"flex",justifyContent: "flex-end" }}>
+          <Button onClick={handleSendOtp} variant="contained"  color="success">
+          Proceed
+          </Button>
           </div>
-        </DialogContent>
-        <DialogActions>
+          </DialogContent>
+          <DialogActions>
           <div className="btn-proceed"></div>
-        </DialogActions>
-      </Dialog>
-    </div>
-  );
-}
-
+          </DialogActions>
+          </Dialog>
+          </div>
+          );
+        }
+        // {enabled && <p style={{ color: "green" }}>Your OTP is Verified</p>}
+        // <ResendOTP
+        // maxTime={15}
+        //   style={{ display: "flex", justifyContent: "flex-start" }}
+        //   handelResendClick={() => console.log("Resend clicked")}
+        // />
 export default Otp;

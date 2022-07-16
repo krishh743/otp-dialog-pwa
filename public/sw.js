@@ -19,6 +19,7 @@ const assets = [
 ];
 
 //install sw
+// eslint-disable-next-line no-restricted-globals
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(staticCache).then((cache) => {
@@ -28,6 +29,7 @@ self.addEventListener("install", (event) => {
   console.log("Service  worker installed");
 });
 //activate sw
+// eslint-disable-next-line no-restricted-globals
 self.addEventListener("activate", (event) => {
   console.log("Service worker activated");
 
@@ -43,6 +45,7 @@ self.addEventListener("activate", (event) => {
 });
 
 //fetch sw 
+// eslint-disable-next-line no-restricted-globals
 self.addEventListener("fetch", (event) => {
 
   event.respondWith(
@@ -52,6 +55,7 @@ self.addEventListener("fetch", (event) => {
         fetch(event.request).then((fetchRes) => {
           return caches.open(dynamicCache).then((cache) => {
             cache.put(event.request.url, fetchRes.clone());
+            // eslint-disable-next-line no-undef
             limitCacheSize(dynamicCache, 15);
             return fetchRes;
           });
