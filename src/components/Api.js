@@ -3,12 +3,11 @@ import "../App.css";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
-import OTPInput,{ResendOTP} from "otp-input-react";
+import OTPInput, { ResendOTP } from "otp-input-react";
 import CloseIcon from "@mui/icons-material/Close";
 import Container from "@mui/material/Container";
 import Otp from "../components/Otp";
-import swal from 'sweetalert';
-
+import swal from "sweetalert";
 
 export default function Api() {
   const [state, setState] = useState({
@@ -25,33 +24,31 @@ export default function Api() {
           padding: 10,
         }}
       >
-        <div style={{ marginBottom: 32 }}>{title}</div>
-        <OTPInput value={OTP} onChange={setOTP} {...rest} />
+        <div style={{ marginBottom: 32 }}>{title}</div> 
+        <OTPInput value={OTP} onChange={setOTP} {...rest}/>
       </div>
     );
   };
 
   const toggleDrawer = (anchor, open) => (event) => {
-    
     if (
       event.type === "keydown" &&
       (event.key === "Tab" || event.key === "Shift")
-      ) {
-        return;
-      }
+    ) {
+      return;
+    }
 
     setState({ ...state, [anchor]: open });
   };
 
   const handleSendOtp = () => {
-    swal("OTP verified successfully!")
-
     // do your api call
     // enable otp listener
     const res = Math.floor(1000 + Math.random() * 9000);
     setTimeout(() => {
       setOTP(res);
       setEnabled(true);
+      swal("OTP verified successfully!");
     }, 3000);
   };
 
@@ -82,8 +79,10 @@ export default function Api() {
             value={otp}
             onChange={(e) => setOTP(e.target.value)}
           />
-          <ResendOTP style={{display:"flex",justifyContent: "flex-start"}} handelResendClick={() => console.log("Resend clicked")} />
-
+          <ResendOTP
+            style={{ display: "flex", justifyContent: "flex-start" }}
+            handelResendClick={() => console.log("Resend clicked")}
+          />
         </div>
         <div>
           {enabled && <p style={{ color: "green" }}>Your OTP is Verified</p>}

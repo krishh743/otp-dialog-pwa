@@ -1,7 +1,8 @@
+// import { AutoGraphRounded } from '@mui/icons-material'
 import React from 'react'
 import firebase from './firebase'
 
-class Send extends React.Component {
+class Autoread extends React.Component {
   handleChange = (e) =>{
     const {name, value } = e.target
     this.setState({
@@ -53,6 +54,7 @@ class Send extends React.Component {
       // ...
     });
   }
+
   render() {
     return (
       <div>
@@ -72,4 +74,9 @@ class Send extends React.Component {
     )
   }
 }
-export default Send
+export default Autoread;
+
+
+
+
+//https://api.authkey.io/request?authkey=cd292d4f2e410524&mobile=9140621042&country_code=91&sid=5315&name=Emproto&time=10
