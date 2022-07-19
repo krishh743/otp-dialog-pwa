@@ -122,11 +122,11 @@ import {
       props.history.push("/api");
     };
   
-    const handleToggle = () => {
-      setToggle(!toggle);
-    };
+    // const handleToggle = () => {
+    //   setToggle(!toggle);
+    // };
     return (
-      <div>
+      <div> 
         {mode === "offline" ? (
           <Stack sx={{ width: "100%" }} spacing={2}>
             <Alert severity="warning">

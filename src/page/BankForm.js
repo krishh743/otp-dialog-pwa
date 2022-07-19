@@ -19,7 +19,7 @@ function BankForm() {
 
   return (
     <div>
-      BankForm
+      Go Bank
       <ArrowBackIcon onClick={handleClick} fontSize="large" />
       <Form />
     </div>

@@ -1,10 +1,11 @@
 import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 import Home from "../page/Home";
 import Menu from "../page/Menu";
 import BankFrom from "../page/BankForm";
 import Loans from "../page/Loans";
 import Applications from "../page/Applications";
+import Login from "../page/Login";
 
 function Main() {
   return (
@@ -16,6 +17,8 @@ function Main() {
         <Route exact path="bankform" element={<BankFrom />} />
         <Route exact path="loans" element={<Loans />} />
         <Route exact path="applications" element={<Applications />} />
+        <Route exact path="login" element={<Login/>} />
+
       </Routes>
       
     </div>
