@@ -16,6 +16,7 @@ const isMobileNumberValid = (ph) => {
   };
   
   const isPanNumberValid = (pan) => {
+  
     const regX = new RegExp(/^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$/);
     return regX.test(pan);
   };

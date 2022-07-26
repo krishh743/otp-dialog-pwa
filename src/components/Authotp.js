@@ -11,15 +11,19 @@ function Authotp() {
     setMobile(event.target.value);
   };
   const navigate = useNavigate();
-  const getUserDataa = () => {
-    navigate("../login", { replace: false });
-  };
-  let url = `https://api.authkey.io/request?authkey=cd292d4f2e410524&mobile=${mobile}&country_code=91&sid=5315&company=emproto&time=10mins&otp=1234`;
+
+  // const getUserDataa = () => {
+  //   
+  // };
+
+  // let url = `https://api.authkey.io/request?authkey=cd292d4f2e410524&mobile=${mobile}&country_code=91&sid=5315&company=emproto&time=10mins&otp=1234`;
+  let url=`https://api.authkey.io/request?authkey=56b322950fb71ea3&mobile=${mobile}&country_code=91&sid=5254&company=Emproto&time=10`
   async function getUserData() {
     try {
       const response = await axios.get(url);
       console.log(response);
       console.log(mobile);
+      navigate("../login", { replace: false });
     } catch (error) {
       console.log(error);
     }
@@ -37,7 +41,7 @@ function Authotp() {
         size="large"
         className="btn btn-primary"
         variant="contained"
-        onClick={getUserDataa}
+        onClick={getUserData}
       >
         send otp
       </Button>

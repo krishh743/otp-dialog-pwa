@@ -1,0 +1,24 @@
+.loans-image{
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqcPoXWN17m24A4nXaCVw07AEeasdLFJr6aw&usqp=CAU");
+}
+
+.used-car{
+    background-image: url("https://imgd-ct.aeplcdn.com/640X480/cw/ucp/stockApiImg/ICMU2JR_2396509_1_22824322.jpg?q=75");
+}
+
+.bike-loan{
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy01g7G9LJNxZolIZR_U2clC6IW_A_3HJeGA&usqp=CAU");
+}
+
+.car-against{
+background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjgGSrwc0u6NWbTAAsYhFm5d4yy-H8hK0iRg&usqp=CAU");
+}
+
+.card-container{
+    height: "900px";
+    display: flex;
+    justify-content:center;
+    align-items: center;
+margin-top: 50px;
+}
+
