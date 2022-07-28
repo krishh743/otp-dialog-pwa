@@ -36,6 +36,10 @@ function BasicDetails() {
   const [model, setModel] = useState(false);
   const [variant, setVariant] = useState(false);
 
+  const handleButton = () => {
+    navigate("/initialoffer");
+  };
+
   return (
     <Container
       style={{ display: "flex", justifyContent: "flex-start", width: "500px" }}
@@ -45,7 +49,7 @@ function BasicDetails() {
           container
           direction="column"
           maxWidth={"450px"}
-          sx={{ flexDirection: "row" }}
+          sx={{ flexDirection: "row", marginTop: "40px" }}
         >
           <Typography variant="h4">Step 1: Basic Details</Typography>
           <Grid item xs={4} sm={3} md={3} lg={3} xl={3}>
@@ -80,11 +84,11 @@ function BasicDetails() {
             />
           </Grid>
 
-          <Grid item xs={14} sx={{ marginTop: "15px" }}>
+          <Grid item xs={14} sx={{ marginTop: "25px" }}>
             <Typography variant="h5" style={{ marginBottom: "25px" }}>
               Vehicle
             </Typography>
-            <label>Location Pincode</label>
+            <Typography>Location Pincode</Typography>
             <TextField
               id="standard-multiline-flexible"
               multiline
@@ -95,8 +99,8 @@ function BasicDetails() {
               variant="standard"
             />
           </Grid>
-          <Grid item xs={14} sx={{ marginTop: "15px" }}>
-            <label>City</label>
+          <Grid item xs={14} sx={{ marginTop: "25px" }}>
+            <Typography>City</Typography>
             <Autocomplete
               {...flatProps}
               id="flat-demo"
@@ -107,8 +111,8 @@ function BasicDetails() {
               )}
             />
           </Grid>
-          <Grid item xs={14} sx={{ marginTop: "15px" }}>
-            <label>Make</label>
+          <Grid item xs={14} sx={{ marginTop: "25px" }}>
+            <Typography>Make</Typography>
             <Autocomplete
               {...flatProps}
               id="flat-demo"
@@ -119,8 +123,8 @@ function BasicDetails() {
               onChange={() => setMake(true)}
             />
           </Grid>
-          <Grid item xs={14} sx={{ marginTop: "15px" }}>
-            <label>Monthly Declared Income</label>
+          <Grid item xs={14} sx={{ marginTop: "25px" }}>
+            <Typography>Monthly Declared Income</Typography>
             <Autocomplete
               {...flatProps}
               id="flat-demo"
@@ -131,8 +135,8 @@ function BasicDetails() {
               )}
             />
           </Grid>
-          <Grid item xs={14} sx={{ marginTop: "15px" }}>
-            <label>Model</label>
+          <Grid item xs={14} sx={{ marginTop: "25px" }}>
+            <Typography>Model</Typography>
             <Autocomplete
               {...flatProps}
               id="flat-demo"
@@ -143,18 +147,23 @@ function BasicDetails() {
               )}
             />
           </Grid>
-          <Grid item xs={14} sx={{ marginTop: "15px" }}>
-            <label>Variant</label>
+          <Grid item xs={14} sx={{ marginTop: "25px" }}>
+            <Typography>Variant</Typography>
             <Autocomplete
               {...flatProps}
               id="flat-demo"
               disabled={!model}
               onChange={() => setVariant(true)}
               renderInput={(params) => (
-                <TextField {...params} label="" variant="standard" />
+                <TextField {...params} label="" variant="standard"  />
               )}
             />
           </Grid>
+
+          {variant && ( <Grid item xs={14} >
+            <Typography variant="h5">On Road Price </Typography>
+            <p style={{ fontSize: "30px", marginLeft: "100px" }}>5,50,000 </p>
+          </Grid> )}
 
           <Grid>
             <div
@@ -163,10 +172,14 @@ function BasicDetails() {
                 flexDirection: "row",
                 justifyContent: "flex-end",
                 width: "460px",
-                marginTop: "50px",
               }}
             >
-              <Button size="large" disabled={!variant} variant="contained">
+              <Button
+                size="large"
+                disabled={!variant}
+                variant="contained"
+                onClick={handleButton}
+              >
                 Continue
                 <ArrowRightIcon />
               </Button>

@@ -5,6 +5,7 @@ import OtpPage from "./welcome-page/OtpPage";
 import BasicDetails from "./page-25/BasicDetails";
 import StepperBar from "./welcome-page/StepperBar";
 import BasicDetailsForm from "./page-25/BasicDetailsForm";
+import Otp from "./components/Otp";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
     );
   }
   
+  // <Otp/>
   // <BasicDetails/>
   // <BasicDetailsForm/>
   // <StepperBar/>

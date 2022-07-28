@@ -11,6 +11,10 @@ import {
 } from "@mui/material";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import Autocomplete from "@mui/material/Autocomplete";
+import PropTypes from "prop-types";
+import NumberFormat from "react-number-format";
+import { Buttonwithicon } from "../common-ui/Buttonwithicon";
+import { DialogBox } from "../common-ui/DialogBox";
 
 const commonStyles = {
   bgcolor: "background.paper",
@@ -20,6 +24,36 @@ const commonStyles = {
   width: "7rem",
   height: "7rem",
   backgroundColor: "gray",
+};
+
+const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
+  props,
+  ref
+) {
+  const { onChange, ...other } = props;
+
+  return (
+    <NumberFormat
+      {...other}
+      getInputRef={ref}
+      onValueChange={(values) => {
+        onChange({
+          target: {
+            name: props.name,
+            value: values.value,
+          },
+        });
+      }}
+      thousandSeparator={true}
+      thousandsGroupStyle="lakh"
+      prefix={"₹"}
+    />
+  );
+});
+
+NumberFormatCustom.propTypes = {
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 function BasicDetails() {
@@ -33,8 +67,33 @@ function BasicDetails() {
   const [mincome, setMincome] = useState(false);
   const [existing, setExisting] = useState(false);
 
+  const [values, setValues] = useState({
+    textmask: "(100) 000-0000",
+    numberformat: "",
+  });
+
+  const [income, setIncome] = useState({
+    textmask: "(100) 000-0000",
+    numberformat: "",
+  });
   const handleButton = () => {
     navigate("/vehicle");
+  };
+
+  const handleChange = (event) => {
+    setExisting(true);
+    setValues({
+      ...values,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleChangeCurrency = (event) => {
+    setOccupation(true);
+    setIncome({
+      ...income,
+      [event.target.name]: event.target.value,
+    });
   };
 
   return (
@@ -46,7 +105,7 @@ function BasicDetails() {
           container
           direction="column"
           maxWidth={"450px"}
-          sx={{ flexDirection: "row" }}
+          sx={{ flexDirection: "row", marginTop: "40px" }}
         >
           <Typography variant="h4">Step 1: Basic Details</Typography>
           <Grid item xs={4} sm={3} md={3} lg={3} xl={3}>
@@ -77,7 +136,7 @@ function BasicDetails() {
             />
           </Grid>
 
-          <Grid item xs={14} sx={{ marginTop: "15px" }}>
+          <Grid item xs={14} sx={{ marginTop: "25px" }}>
             <Typography variant="h5" style={{ marginBottom: "25px" }}>
               Professional
             </Typography>
@@ -91,7 +150,7 @@ function BasicDetails() {
               )}
             />
           </Grid>
-          <Grid item xs={14} sx={{ marginTop: "15px" }}>
+          <Grid item xs={14} sx={{ marginTop: "25px" }}>
             <label>Occupation</label>
             <Autocomplete
               {...flatProps}
@@ -103,30 +162,35 @@ function BasicDetails() {
               onChange={() => setMincome(true)}
             />
           </Grid>
-          <Grid item xs={14} sx={{ marginTop: "15px" }}>
+          <Grid item xs={14} sx={{ marginTop: "25px" }}>
             <label>Monthly Declared Income</label>
             <TextField
-              id="standard-multiline-flexible"
-              multiline
-              type="number"
-              maxRows={5}
+              type="text"
+              // value={income.numberformat}
+              id="formatted-numberformat-input"
               sx={{ width: "445px", marginLeft: "5px" }}
-              onChange={() => setOccupation(true)}
+              InputProps={{
+                inputComponent: NumberFormatCustom,
+              }}
+              onChange={handleChangeCurrency}
               disabled={!mincome}
               variant="standard"
             />
           </Grid>
-          <Grid item xs={14} sx={{ marginTop: "15px" }}>
+
+          <Grid item xs={14} sx={{ marginTop: "25px" }}>
             <label>Existing EMI/Month</label>
             <TextField
-              id="standard-multiline-flexible"
-              multiline
-              type="number"
-              maxRows={5}
-              sx={{ width: "445px", marginLeft: "5px" }}
-              onChange={() => setExisting(true)}
+              value={values.numberformat}
+              onChange={handleChange}
+              name="numberformat"
+              id="formatted-numberformat-input"
               disabled={!occupation}
+              InputProps={{
+                inputComponent: NumberFormatCustom,
+              }}
               variant="standard"
+              sx={{ width: "445px", marginLeft: "5px" }}
             />
           </Grid>
 
@@ -140,6 +204,7 @@ function BasicDetails() {
                 marginTop: "50px",
               }}
             >
+          
               <Button
                 size="large"
                 disabled={!existing}

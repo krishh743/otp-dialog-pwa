@@ -22,6 +22,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
 import Slide from "@mui/material/Slide";
+import DialogBox from "../common-ui/DialogBox";
 
 const commonStyles = {
   bgcolor: "background.paper",
@@ -47,6 +48,7 @@ const BootstrapButton = styled(Button)({
   lineHeight: 1.5,
   backgroundColor: "#0063cc",
   borderColor: "black",
+  width:"120px",
   fontFamily: [
     "-apple-system",
     "BlinkMacSystemFont",
@@ -60,13 +62,13 @@ const BootstrapButton = styled(Button)({
     '"Segoe UI Symbol"',
   ].join(","),
   "&:hover": {
-    backgroundColor: "#0069d9",
+    backgroundColor: "black",
     borderColor: "black",
     boxShadow: "none",
   },
   "&:active": {
     boxShadow: "none",
-    backgroundColor: "#0062cc",
+    backgroundColor: "black",
     borderColor: "black",
   },
   "&:focus": {
@@ -85,10 +87,13 @@ function BasicDetails() {
     setOpen(true);
   };
 
+  const handleproceed = () => {
+    setOpen(false);
+
+    navigate("/form");
+  };
   const handleClose = () => {
     setOpen(false);
-    navigate("/form");
-    // alert("jlkfjfenk")
   };
 
   const handleWhatsAppEnable = () => {
@@ -247,22 +252,32 @@ function BasicDetails() {
               <Typography variant="h5">Confirmation</Typography>
             </DialogTitle>
             <DialogContent>
-              <DialogContentText id="alert-dialog-slide-description">
-                Are You sure want to submit the personal details? Post
-                submission any information cannot be revisited or edited again.
+              <DialogContentText
+                id="alert-dialog-slide-description"
+                color="bold"
+                sx={{ justifyContent: "center" }}
+              >
+                <Typography>
+                  Are You sure want to submit the personal details?
+                </Typography>
+                <Typography>
+                  Post submission any information cannot be revisited or edited
+                  again.
+                </Typography>
               </DialogContentText>
             </DialogContent>
-            <DialogActions>
+            <DialogActions sx={{ justifyContent: "center" }}>
               <BootstrapButton
                 variant="contained"
-                sx={{
+                style={{
                   fontWeight: "bold",
                   backgroundColor: "white",
                   color: "black",
                 }}
-                // onClick={handleClose}
+                onClick={handleClose}
                 autoFocus
                 disableRipple
+              
               >
                 Cancel
               </BootstrapButton>
@@ -270,7 +285,7 @@ function BasicDetails() {
               <BootstrapButton
                 variant="contained"
                 sx={{ backgroundColor: "black", fontWeight: "bold" }}
-                onClick={handleClose}
+                onClick={handleproceed}
                 autoFocus
                 disableRipple
               >

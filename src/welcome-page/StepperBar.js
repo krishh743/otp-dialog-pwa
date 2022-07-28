@@ -138,8 +138,10 @@ function StepperBar(props) {
             Continue <ArrowRightIcon />
           </Button>
         </div>
-      </Box>
-    </Container>
+        </Box>
+        
+     
+        </Container>
   );
 }
 

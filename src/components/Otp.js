@@ -96,7 +96,7 @@ swal("OTP verified successfully!")
           />
 
          
-         
+  
           
           <Timer/>
 
