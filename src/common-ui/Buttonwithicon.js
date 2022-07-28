@@ -52,7 +52,7 @@ export  function Buttonwithicon() {
     autoFocus
     disableRipple
   >
-    Proceed
+    Proceed button
   </BootstrapButton> 
      </div>
   )
